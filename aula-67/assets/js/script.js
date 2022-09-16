@@ -11,8 +11,9 @@ addButton.addEventListener('click', (e) => {
         return;
     }
 
-    wrapper.appendChild(createTask(toDoInput.value));
+    createTask(toDoInput.value);
     clearInput();
+    saveTasks();
 })
 
 // Criar Task apertando enter
@@ -25,14 +26,19 @@ toDoInput.addEventListener('keypress', (e) => {
             return;
         }
 
-        wrapper.appendChild(createTask(toDoInput.value));
+        createTask(toDoInput.value);
         clearInput();
+        saveTasks();
     }
 
 })
 
 // // Deletar Task
-document.addEventListener('click', (e) => deleteTask(e.target))
+document.addEventListener('click', (e) => {
+    deleteTask(e.target);
+    saveTasks();
+})
+
 
 function clearInput(){
     toDoInput.value = '';
@@ -53,7 +59,7 @@ function createTask (msg){
     taskWrapper.appendChild(checkbox);
     taskWrapper.appendChild(task);
     taskWrapper.appendChild(deleteButton);
-    return taskWrapper;
+    wrapper.appendChild(taskWrapper);
 }
 
 function createCheckbox() {
@@ -63,7 +69,6 @@ function createCheckbox() {
     const done = document.createElement('input');
     done.type = 'checkbox';
     done.value = '1';
-    done.id = "checkbox-input";
 
     const label = document.createElement('label');
     label.htmlFor = "checkbox-input";
@@ -94,3 +99,27 @@ function deleteTask(button) {
     if (button.classList.contains('delete')) button.parentElement.remove();
 }
 
+function saveTasks()  {
+    const tasks = wrapper.querySelectorAll(' p');
+    let taskList = [];
+    
+    for (task of tasks) {
+        let taskText = task.innerHTML;
+        taskList.push(taskText);
+    }
+    
+    const tasksJSON = JSON.stringify(taskList);
+    localStorage.setItem('tasks', tasksJSON);
+    
+}
+
+function loadTasks() {
+    const tasks = localStorage.getItem('tasks');
+    let taskList = JSON.parse(tasks);
+
+    for (task of taskList) {
+        createTask(task);
+    }
+}
+
+loadTasks();

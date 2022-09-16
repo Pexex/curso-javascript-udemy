@@ -34,61 +34,64 @@ body {
   max-width: 40px;
   min-width: 540px;
   margin: 50px auto;
-  padding: 20px;
+  padding: 10px 20px;
   border-radius: 10px;
   display: flex;
-  text-align: center;
+  text-align: left;
   justify-content: space-between;
   align-items: center;
   gap: 22px;
 }
 
-.task-container input {
-  height: 0;
-  width: 0;
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
 .task-container p {
-  margin-left: 50px;
+  position: relative;
+  justify-self: flex-start;
+  margin-left: -65%;
 }
 
-.checkmark {
+.task-checkbox input {
+  opacity: 0;
+}
+
+.task-checkbox {
+  width: 25px;
+  height: 25px;
+  margin-right: 0;
+  position: relative;
+  /* border: 1px solid red; */
+}
+
+.task-checkbox label {
+  cursor: pointer;
   position: absolute;
-  height: 30px;
-  width: 30px;
-  background-color: var(--bg-color);
+  width: 25px;
+  height: 25px;
+  top: 0;
+  left: 0;
 }
 
-.task-container:hover input ~ .checkmark {
-  border: 1px solid #fff;
+.task-checkbox label::after {
+    opacity: 0.2;
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 5px;
+    background: transparent;
+    top: 6px;
+    left: 7px;
+    border: 3px solid #333;
+    border-top: none;
+    border-right: none;
+
+    transform: rotate(-45deg);
 }
 
-.task-container input:checked ~ .checkmark {
-  background-color: greenyellow;
+.task-checkbox label:hover:after{
+  opacity: 0.5;
 }
 
-.task-container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-.task-container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
+.task-checkbox input[type=checkbox]:checked + label::after {
+  opacity: 1;
 }
 
 .container input {

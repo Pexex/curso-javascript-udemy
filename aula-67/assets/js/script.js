@@ -71,7 +71,7 @@ function createCheckbox() {
     done.value = '1';
 
     const label = document.createElement('label');
-    label.htmlFor = "checkbox-input";
+    label.htmlFor = "task-checkbox";
     label.classList.add('neuromorphic-shadows-inside');
 
     checkbox.appendChild(done);
@@ -96,7 +96,11 @@ function createTaskText(msg) {
 }
 
 function deleteTask(button) {
-    if (button.classList.contains('delete')) button.parentElement.remove();
+    if (button.classList.contains('delete')) {
+        if (confirm('Are you sure that you want to delete this task?')){
+            button.parentElement.remove();
+        }
+    }
 }
 
 function saveTasks()  {

@@ -49,3 +49,8 @@ btns[9].addEventListener('click', (e) => {
     e.preventDefault();
     location.href="./aula-97/index.html";
 });
+
+btns[10].addEventListener('click', (e) => {
+    e.preventDefault();
+    location.href="./aula-106/index.html";
+});

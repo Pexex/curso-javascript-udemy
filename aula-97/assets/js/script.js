@@ -30,11 +30,11 @@ function validateCPF(cpf, validatedCpf) {
 }
 
 function convertToArray(cpf) {
-    const cpfWithoutSimbols = cpf.replaceAll(/[.-]/gi, "");
+    const cpfWithoutSimbols = cpf.replace(/\D+/g, '');
     return Array.from(cpfWithoutSimbols).map(Number).slice(0, -2);
 }
 
-function createDigits (array) {
+function createDigits(array) {
     let newCPF;
     while (array.length < 11){
         let factor = array.length + 1;

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/style/style.css" />
+    <script type="module" src="./assets/js/script.js" defer></script>
+    <title>Aula 107 - Validar Formulário</title>
+  </head>
+  <body>
+    <section class="container neuromorphic-shadows">
+      <h1>Formulário de Cadastro</h1>
+      <ul>
+        <li>Nenhum campo pode estar vazio</li>
+        <li>Usuário só poderá conter letras e números</li>
+        <li>Usuário deverá possuir entre 3 e 12 caracteres</li>
+        <li>Senha precisa ter entre 6 e 12 caracteres</li>
+      </ul>
+      <form action="/" class="form" method="POST">
+        <label for="name">Nome</label>
+        <input
+          type="text"
+          class="neuromorphic-shadows-inside name"
+          name="name"
+        />
+        <label for="lastname">Sobrenome</label>
+        <input
+          type="text"
+          class="neuromorphic-shadows-inside lastname"
+          name="lastname"
+        />
+        <label for="cpf">CPF</label>
+        <input type="text" class="neuromorphic-shadows-inside cpf" name="cpf" />
+        <label for="username">Usuário</label>
+        <input
+          type="text"
+          class="neuromorphic-shadows-inside username"
+          name="username"
+        />
+        <label for="password">Senha</label>
+        <input
+          type="password"
+          class="neuromorphic-shadows-inside password"
+          name="password"
+        />
+        <label for="repeat-password">Repetir Senha</label>
+        <input
+          type="password"
+          class="neuromorphic-shadows-inside repeat-password"
+          name="repeat-password"
+        />
+        <input type="submit" class="neuromorphic-shadows" />
+      </form>
+    </section>
+  </body>
+</html>

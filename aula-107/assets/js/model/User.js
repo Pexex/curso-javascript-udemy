@@ -86,10 +86,14 @@ export class User {
   }
 
   checkUsernameLength() {
-    this.#username.length > 2 && this.#username < 13 ? true : false;
+    return this.#username.length > 2 && this.#username.length < 13;
   }
 
   checkPasswordLength() {
-    this.#password.length > 5 && this.#password.length < 13 ? true : false;
+    return this.#password.length > 5 && this.#password.length < 13;
+  }
+
+  checkPasswordsEqual(secondPassword) {
+    return this.#password === secondPassword;
   }
 }
